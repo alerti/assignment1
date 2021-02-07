@@ -4,49 +4,206 @@
     <script type="text/javascript" src="initializeObjects.js"></script>
     <script type="module">
       // Add import(s) for your module(s) to here and modify event listeners
-
       document.querySelector('#spaceHorizontally').addEventListener('click',
-        () => {
-          alert("EDIT ME")
-        }
-      )
+        () =>{
+          var spacing = document.getElementById("#spacing");
 
-      document.querySelector('#spaceVertically').addEventListener('click',
-        () => {
-          alert("EDIT ME")
-        }
-      )
+   var group = canvas.getActiveObject();
+    var items = canvas.getActiveObject()._objects;
+    group.set({
+      
+    });
+    for (var i = 0; i < items.length; i++) {
+      if (i == 0) {
+        items[i].set({
+          left:items[0].getScaledWidth()+spacing
+       
+        });
+      } else {
+        items[i].set({
+          left:items[0].getScaledWidth()+spacing
+       
+        });
+      }
+    }
+    canvas.renderAll();
+});
 
+ 
+   document.querySelector('#spaceVertically').addEventListener('click',
+        () => { var swarmItems = canvas.getActiveObject();
+          var swarmItems = canvas.getActiveObject();
+    var items = canvas.getActiveObject()._objects;
+    swarmItems.set({
+      
+    });
+    for (var i = 0; i < items.length; i++) {
+      if (i == 0) {
+        items[i].set({
+          left: -swarmItems.width / 2 ,
+          top: -swarmItems.height / 2 
+        });
+      } else {
+        items[i].set({
+          left: items[i - 1].left,
+          top: items[i - 1].top + items[i - 1].height + 5
+        });
+      }
+    }
+    canvas.renderAll();
+});
+
+ 
       document.querySelector('#alignLeft').addEventListener('click',
-        () => {
-          alert("EDIT ME")
-        }
-      )
+        () =>  {
+        var swarmItems = canvas.getActiveObject();
+    var items = canvas.getActiveObject()._objects,
+    newDim = aliGngleft(swarmItems, 'alignleft');
+    swarmItems.set({
+      width: newDim.width ,
+      height: newDim.height 
+      
+    });
+    for (var i = 0; i < items.length; i++) {
+      if (i == 0) {
+        items[i].set({
+          left: 0,
+          top: 0 
+        });
+      } else {
+        items[i].set({
+          left: 0,
+          top: 0
+        });
+      }
+    }
+    canvas.renderAll();
+});
 
+ function aliGngleft(swarmItems, val) {
+    var objects = canvas.getActiveObject()._objects, minWidth = 0, minHeight = 0, w, h;
+    switch (val) {
+     
+      case 'alingleft':
+        for (var i = 0; i < objects.length; i++) {
+          minHeight += objects[i].scaleY;
+          w = objects[i].width ;
+          if (w > minWidth) {
+            minWidth = w;
+          }
+        }
+        break;
+    }
+    return {
+      width: minWidth,
+      height: minHeight
+    }
+  }
+ ;
       //document.querySelector('#alignRight').addEventListener('click', (event) => handleClick(event))
       document.querySelector('#alignRight').addEventListener('click',
         () => {
-          alert("EDIT ME")
-        }
-      )
+          var swarmItems = canvas.getActiveObject();
+    var items = canvas.getActiveObject()._objects;
+    swarmItems.set({
+     
+    });
+    for (var i = 0; i < items.length; i++) {
+      if (i == 0) {
+        items[i].set({
+          left:swarmItems.width/2,
+         
+        });
+      } else {
+        items[i].set({
+         
+          left:items[i-1].left,
+
+        });
+      }
+    }
+    canvas.renderAll();
+});
 
       document.querySelector('#alignTop').addEventListener('click',
         () => {
-          alert("EDIT ME")
-        }
-      )
+          var swarmItems = canvas.getActiveObject();
+    var items = canvas.getActiveObject()._objects;
+    swarmItems.set({
+      // width:  newDim.width + (2 * 0) ,
+      // height: newDim.height + (items.length ) * 10 + (2 * 0)
+    });
+    for (var i = 0; i < items.length; i++) {
+      if (i == 0) {
+        items[i].set({
+          top:-items[i].height,
+          top:-items[i].height,
+        });
+      } else {
+        items[i].set({
+         
+          top:-items[i].height,
+          top:-items[i].height,
 
+        });
+      }
+    }
+    canvas.renderAll();
+});
       document.querySelector('#alignMiddle').addEventListener('click',
         () => {
-          alert("EDIT ME")
-        }
-      )
+          var swarmItems = canvas.getActiveObject();
+    var items = canvas.getActiveObject()._objects;
+    swarmItems.set({
+      // width:  newDim.width + (2 * 0) ,
+      // height: newDim.height + (items.length ) * 10 + (2 * 0)
+      
+    });
+    for (var i = 0; i < items.length; i++) {
+      if (i == 0) {
+        items[i].set({
+          width:items[i].width,
+
+          top:swarmItems- items[i-1],
+        });
+      } else {
+        items[i].set({
+         
+          top:swarmItems- items[i-1],
+
+        });
+      }
+    }
+    canvas.renderAll();
+});
 
       document.querySelector('#alignBottom').addEventListener('click',
-        () => {
-          alert("EDIT ME")
-        }
-      )
+        () =>{
+        var swarmItems = canvas.getActiveObject();
+    var items = canvas.getActiveObject()._objects;
+    swarmItems.set({
+      // width:  newDim.width + (2 * 0) ,
+      // height: newDim.height + (items.length ) * 10 + (2 * 0)
+    });
+    for (var i = 0; i < items.length; i++) {
+      if (i == 0) {
+        items[i].set({
+          top:swarmItems.height/items[i].height,
+          top:swarmItems.height/items[i].height,
+        });
+      } else {
+        items[i].set({
+         
+          top:swarmItems.height/items[i].height,
+          top:swarmItems.height/items[i].height,
+
+        });
+      }
+    }
+    canvas.renderAll();
+});
+  
+  
     
     </script>
   </head>
